@@ -1,0 +1,25 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.autoSave": "onFocusChange",
+  "explorer.compactFolders": false,
+  // "css.validate": false,
+  // "less.validate": false,
+  // "scss.validate": false,
+  // "stylelint.validate": ["css", "scss"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[scss]": {
+    "editor.formatOnSave": true,
+  },
+  "[js]": {
+    "editor.formatOnSave": true,
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+  },
+  "[vue]": {
+    "editor.formatOnSave": true,
+  }
+}
+

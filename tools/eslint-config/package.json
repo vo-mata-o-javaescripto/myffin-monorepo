@@ -1,0 +1,13 @@
+{
+  "name": "@myffin/tools-eslint-config",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "eslint": "^8.17.0",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
+  }
+}
