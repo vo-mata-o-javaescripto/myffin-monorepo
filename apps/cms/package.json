@@ -1,0 +1,16 @@
+{
+  "name": "@myffin/apps-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx directus start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "directus": "^9.13.0",
+    "sqlite3": "^5.0.8"
+  }
+}

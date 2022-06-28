@@ -13,6 +13,7 @@
     "dev:all": "pnpm run --filter '@myffin/apps-*' --parallel dev",
     "dev:webapp": "pnpm run --filter '@myffin/apps-webapp' dev",
     "dev:api": "pnpm run --filter '@myffin/apps-api' dev",
+    "dev:cms": "pnpm run --filter '@myffin/apps-cms' dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "storybook": "BROWSER=none start-storybook -p 6006",
