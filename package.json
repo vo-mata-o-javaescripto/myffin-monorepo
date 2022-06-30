@@ -12,6 +12,7 @@
     "build": "turbo run build",
     "dev:all": "pnpm run --filter '@myffin/apps-*' --parallel dev",
     "dev:webapp": "pnpm run --filter '@myffin/apps-webapp' dev",
+    "dev:webapp-vue": "pnpm run --filter '@myffin/apps-webapp-vue' dev",
     "dev:api": "pnpm run --filter '@myffin/apps-api' dev",
     "dev:cms": "pnpm run --filter '@myffin/apps-cms' dev",
     "lint": "turbo run lint",

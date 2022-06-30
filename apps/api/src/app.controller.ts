@@ -14,6 +14,7 @@ const directus = new Directus('http://localhost:8055');
 
 @Controller()
 export class AppController {
+  // eslint-disable-next-line no-useless-constructor
   constructor(private readonly appService: AppService) {}
 
   @Get('ticker')
@@ -37,7 +38,7 @@ export class AppController {
           return res.status(HttpStatus.OK).json(item.value);
         }
       });
-    } catch (err) {
+    } catch (err: any) {
       return res.status(HttpStatus.BAD_REQUEST).json({ msg: err.message });
     }
   }
@@ -53,20 +54,20 @@ export class AppController {
         password: body.pass
       });
       return res.status(HttpStatus.OK).json(call);
-    } catch (err) {
+    } catch (err: any) {
       return res.status(HttpStatus.BAD_REQUEST).json({ msg: err.message });
     }
   }
 
   @Post('logout')
   async doLogout(
-    @Body() body: { refresh_token: string },
+    // @Body() body: { refresh_token: string },
     @Res() res: Response
   ) {
     try {
-      const call = await this.appService.directusLogout('asdasdasd');
+      const call = await this.appService.directusLogout();
       return res.status(HttpStatus.OK).json(call.data);
-    } catch (err) {
+    } catch (err: any) {
       return res
         .status(HttpStatus.BAD_REQUEST)
         .json({ msg: err.response.data });
