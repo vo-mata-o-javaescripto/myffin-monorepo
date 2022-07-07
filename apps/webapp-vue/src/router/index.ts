@@ -21,38 +21,39 @@ const router = createRouter({
         {
           path: '/login',
           name: 'login',
-          component: LoginView,
+          component: LoginView
         },
         {
           path: '/home',
           name: 'home',
-          component: HomeView,
+          component: HomeView
         },
         {
           path: '/slot/:id?',
           name: 'slot',
-          component: SlotView,
-        },
-      ],
-    },
-  ],
-});
-
-router.beforeEach(async (to, from, next) => {
-  const authStore = useAuthStore();
-  const isAuthenticated = authStore.isLogged;
-  if (to.name !== 'login' && !isAuthenticated) {
-    next({ name: 'login' });
-  } else {
-    const slotStore = useSlotStore();
-    const walletStore = useWalletStore();
-
-    if (walletStore.all.length <= 0) {
-      await Promise.all([slotStore.getAllSlots(), walletStore.getAllWallets()]);
+          component: SlotView
+        }
+      ]
     }
-
-    next();
-  }
+  ]
 });
+
+// router.beforeEach(async (to, from, next) => {
+//   const authStore = useAuthStore();
+//   const isAuthenticated = authStore.isLogged;
+
+//   if (to.name !== 'login' && !isAuthenticated) {
+//     next({ name: 'login' });
+//   } else {
+//     const slotStore = useSlotStore();
+//     const walletStore = useWalletStore();
+
+//     if (walletStore.all.length <= 0) {
+//       await Promise.all([slotStore.getAllSlots(), walletStore.getAllWallets()]);
+//     }
+
+//     next();
+//   }
+// });
 
 export default router;
