@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-const a = 'oi'
+const a = 'oi';
 </script>
