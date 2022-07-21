@@ -23,7 +23,7 @@
 
     <q-page-container>
       <q-page class="q-pa-md">
-        <RouterView :key="$route.fullPath" />
+        <NuxtPage />
       </q-page>
     </q-page-container>
   </q-layout>
@@ -40,7 +40,7 @@ export default defineComponent({
     const router = useRouter();
     const authStore = useAuthStore();
 
-    const goHome = () => router.push({ name: 'home' });
+    const goHome = () => router.push({ name: 'index' });
 
     const doLogout = async () => {
       await authStore.doLogout();

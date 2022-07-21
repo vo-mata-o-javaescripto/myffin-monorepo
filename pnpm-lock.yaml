@@ -62,18 +62,24 @@ importers:
   apps/webapp:
     specifiers:
       '@pinia/nuxt': ^0.3.0
-      '@quasar/extras': ^1.14.3
+      '@quasar/extras': ^1.15.0
       '@quasar/vite-plugin': ^1.0.10
+      chart.js: ^3.8.0
       nuxt: ^3.0.0-rc.6
       pinia: ^2.0.16
+      pinia-plugin-persistedstate: ^1.6.3
       quasar: ^2.7.5
       sass: 1.32.0
+      vue-chartjs: ^4.1.1
     dependencies:
       '@pinia/nuxt': 0.3.0
-      '@quasar/extras': 1.14.3
+      '@quasar/extras': 1.15.0
+      chart.js: 3.8.0
       nuxt: 3.0.0-rc.6_sass@1.32.0
       pinia: 2.0.16
+      pinia-plugin-persistedstate: 1.6.3_pinia@2.0.16
       quasar: 2.7.5
+      vue-chartjs: 4.1.1_chart.js@3.8.0
     devDependencies:
       '@quasar/vite-plugin': 1.0.10_quasar@2.7.5
       sass: 1.32.0
@@ -3671,8 +3677,8 @@ packages:
     resolution: {integrity: sha512-F9T1aIhRIiuJeuxPCu2CBlPj5js6mBZWQOAHHyVlreNa5qhVEHhr/9GfljG6RTnjvTNOjJraTl0hi8g0IuUfLw==}
     dev: false
 
-  /@quasar/extras/1.14.3:
-    resolution: {integrity: sha512-OHyR/pfW0R8E5DvnsV1wg9ISnLL/yXHyOMZsqPY3gUtmfdF2634x2osdVg4YpBYW29vIQeV5feGWGIx8nuprdA==}
+  /@quasar/extras/1.15.0:
+    resolution: {integrity: sha512-e5IHHqo3i/u7yWdcdspBbthnrDDZ3VRXaQoyhEEy526lzITFAw3hnlt4h7YnZ6Ck6gVIM0YbCaZbKaQYfKPOzQ==}
     dev: false
 
   /@quasar/vite-plugin/1.0.10_6d6bpcjviqcvlpeslmibvuyl6y:
@@ -15508,6 +15514,14 @@ packages:
       pinia: 2.0.14_vue@3.2.37
     dev: false
 
+  /pinia-plugin-persistedstate/1.6.3_pinia@2.0.16:
+    resolution: {integrity: sha512-vwxUca3DZKW6+wnGsgu6hA0ESVKoLovF8vH1jMOPBhaH4VpCSTgn5AsprTxXyg3uMk047m0B+NggeMTcCC8H6w==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.0.16
+    dev: false
+
   /pinia/2.0.14_vue@3.2.37:
     resolution: {integrity: sha512-0nPuZR4TetT/WcLN+feMSjWJku3SQU7dBbXC6uw+R6FLQJCsg+/0pzXyD82T1FmAYe0lsx+jnEDQ1BLgkRKlxA==}
     peerDependencies:
@@ -19777,6 +19791,15 @@ packages:
     resolution: {integrity: sha512-jhkyS2Zaey9OAp2xVyGnN0//lLfNtT2elFq1NevaY4JwQEw27DFS970rQbNYPds2WXeq2H/O2HM+qCPcsimJGg==}
     dependencies:
       bundle-runner: 0.0.1
+    dev: false
+
+  /vue-chartjs/4.1.1_chart.js@3.8.0:
+    resolution: {integrity: sha512-rKIQ3jPrjhwxjKdNJppnYxRuBSrx4QeM3nNHsfIxEqjX6QS4Jq6e6vnZBxh2MDpURDC2uvuI2N0eIt1cWXbBVA==}
+    peerDependencies:
+      chart.js: ^3.7.0
+      vue: ^3.0.0-0 || ^2.6.0
+    dependencies:
+      chart.js: 3.8.0
     dev: false
 
   /vue-chartjs/4.1.1_chart.js@3.8.0+vue@3.2.37:

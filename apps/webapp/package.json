@@ -12,11 +12,14 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@quasar/extras": "^1.14.3",
+    "@quasar/extras": "^1.15.0",
     "nuxt": "^3.0.0-rc.6",
     "quasar": "^2.7.5",
     "pinia": "^2.0.16",
-    "@pinia/nuxt": "^0.3.0"
+    "@pinia/nuxt": "^0.3.0",
+    "pinia-plugin-persistedstate": "^1.6.3",
+    "chart.js": "^3.8.0",
+    "vue-chartjs": "^4.1.1"
   },
   "devDependencies": {
     "@quasar/vite-plugin": "^1.0.10",
