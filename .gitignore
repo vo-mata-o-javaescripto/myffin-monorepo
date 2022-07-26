@@ -36,3 +36,6 @@ yarn-error.log*
 # Lock files other than pnpm
 yarn.lock
 package-lock.json
+
+# PNPM
+.pnpm-store
