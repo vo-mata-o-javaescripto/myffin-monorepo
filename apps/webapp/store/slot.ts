@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useAuthStore } from './auth';
 
 export type RootState = {
   all: any[];
@@ -18,8 +19,14 @@ export const useSlotStore = defineStore({
   },
   actions: {
     getAllSlots() {
+      const authStore = useAuthStore();
+
       try {
-        fetch('http://localhost:8055/items/slot')
+        fetch('http://localhost:8055/items/slot', {
+          headers: {
+            Authorization: `Bearer ${authStore.authToken}`
+          }
+        })
           .then(response => response.json())
           .then(data => {
             this.all = data.data;
