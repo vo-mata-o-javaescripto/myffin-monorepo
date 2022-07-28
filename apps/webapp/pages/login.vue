@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/auth';
 
@@ -30,7 +30,7 @@ const submit = async () => {
   await authStore.doLogin();
 
   if (authStore.isLogged) {
-    router.push({ name: 'home' });
+    router.push({ name: 'index' });
   }
 };
 </script>

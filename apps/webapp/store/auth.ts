@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia';
+import { HttpAdapter } from '@/adapters/http-adapter';
+
+const httpAdapter = new HttpAdapter('http://localhost:3005');
 
 export type RootState = {
   user: string | undefined;
@@ -13,10 +16,10 @@ export const useAuthStore = defineStore({
     key: 'pinia.auth',
     // storage: window.sessionStorage,
     paths: ['authToken'],
-    beforeRestore: context => {
+    beforeRestore: _context => {
       console.log('Before hydration...');
     },
-    afterRestore: context => {
+    afterRestore: _context => {
       console.log('After hydration...');
     }
   },
@@ -32,31 +35,29 @@ export const useAuthStore = defineStore({
     }
   },
   actions: {
-    doLogin() {
+    async doLogin(): Promise<void> {
       const email = this.user;
       const password = this.pass;
 
       if (email !== undefined && password !== undefined) {
-        fetch('http://localhost:3005/login', {
-          method: 'POST',
-          body: JSON.stringify({ user: email, pass: password }),
-          headers: { 'Content-type': 'application/json; charset=UTF-8' }
-        })
-          .then(response => response.json())
-          .then(json => {
-            console.log(json);
-            this.authToken = json.access_token;
-            this.user = undefined;
-            this.pass = undefined;
-          })
-          .catch(err => {
-            console.log(err);
-            window.alert('Invalid credentials');
+        try {
+          const call = await httpAdapter.post({
+            path: '/login',
+            payload: { user: email, pass: password },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' }
           });
+          console.log(call);
+          this.authToken = call.access_token;
+          this.user = undefined;
+          this.pass = undefined;
+        } catch (err) {
+          console.log(err);
+          window.alert('Invalid credentials');
+        }
       }
     },
-    doLogout() {
-      fetch('http://localhost:3005/logout', {
+    async doLogout(): Promise<void> {
+      return await fetch('http://localhost:3005/logout', {
         method: 'POST'
       })
         .then(response => response.json())

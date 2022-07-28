@@ -4,6 +4,4 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const a = 'oi';
-</script>
+<script lang="ts" setup></script>
