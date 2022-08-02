@@ -55,6 +55,15 @@ let AppController = class AppController {
             return res.status(common_1.HttpStatus.BAD_REQUEST).json({ msg: err.message });
         }
     }
+    async doLoginRefresh(body, res) {
+        try {
+            const call = await this.appService.refreshToken(body.refreshToken);
+            return res.status(common_1.HttpStatus.OK).json(call);
+        }
+        catch (err) {
+            return res.status(common_1.HttpStatus.BAD_REQUEST).json({ msg: err.message });
+        }
+    }
     async doLogout(res) {
         try {
             const call = await this.appService.directusLogout();
@@ -83,6 +92,14 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "doLogin", null);
+__decorate([
+    (0, common_1.Post)('/login/refresh'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "doLoginRefresh", null);
 __decorate([
     (0, common_1.Post)('logout'),
     __param(0, (0, common_1.Res)()),

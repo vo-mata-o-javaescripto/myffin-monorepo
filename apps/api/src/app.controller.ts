@@ -59,6 +59,19 @@ export class AppController {
     }
   }
 
+  @Post('/login/refresh')
+  async doLoginRefresh(
+    @Body() body: { refreshToken: string },
+    @Res() res: Response
+  ) {
+    try {
+      const call: any = await this.appService.refreshToken(body.refreshToken);
+      return res.status(HttpStatus.OK).json(call);
+    } catch (err: any) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ msg: err.message });
+    }
+  }
+
   @Post('logout')
   async doLogout(
     // @Body() body: { refresh_token: string },

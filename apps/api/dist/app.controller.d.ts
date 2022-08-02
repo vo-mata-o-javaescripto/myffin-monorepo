@@ -8,5 +8,8 @@ export declare class AppController {
         user: string;
         pass: string;
     }, res: Response): Promise<Response<any, Record<string, any>>>;
+    doLoginRefresh(body: {
+        refreshToken: string;
+    }, res: Response): Promise<Response<any, Record<string, any>>>;
     doLogout(res: Response): Promise<Response<any, Record<string, any>>>;
 }

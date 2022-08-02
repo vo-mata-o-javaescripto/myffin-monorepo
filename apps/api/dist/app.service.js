@@ -26,6 +26,11 @@ let AppService = class AppService {
             refresh_token: 'sdfsdfsdf'
         });
     }
+    refreshToken(refreshToken) {
+        return axios_1.default.post('http://localhost:8055/auth/refresh', {
+            refresh_token: refreshToken
+        });
+    }
 };
 AppService = __decorate([
     (0, common_1.Injectable)()

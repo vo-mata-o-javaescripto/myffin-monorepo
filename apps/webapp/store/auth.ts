@@ -1,7 +1,9 @@
 import { defineStore } from 'pinia';
-import { HttpAdapter } from '@/adapters/http-adapter';
+import { useNuxtApp } from 'nuxt/app';
 
-const httpAdapter = new HttpAdapter('http://localhost:3005');
+// import { HttpAdapter } from '@/adapters/http-adapter';
+
+// const httpAdapter = new HttpAdapter('http://localhost:3005');
 
 export type RootState = {
   user: string | undefined;
@@ -41,13 +43,21 @@ export const useAuthStore = defineStore({
 
       if (email !== undefined && password !== undefined) {
         try {
-          const call = await httpAdapter.post({
+          const { $post } = useNuxtApp();
+
+          const call = await $post({
+            host: 'http://localhost:3005',
             path: '/login',
             payload: { user: email, pass: password },
             headers: { 'Content-type': 'application/json; charset=UTF-8' }
           });
           console.log(call);
           this.authToken = call.access_token;
+          window.localStorage.setItem('refreshToken', call.refresh_token);
+          window.localStorage.setItem(
+            'accessTokenExp',
+            new Date(new Date().getTime() + call.expires).toISOString()
+          );
           this.user = undefined;
           this.pass = undefined;
         } catch (err) {
@@ -66,6 +76,8 @@ export const useAuthStore = defineStore({
           this.authToken = undefined;
           this.user = undefined;
           this.pass = undefined;
+          window.localStorage.removeItem('refreshToken');
+          window.localStorage.removeItem('accessTokenExp');
         })
         .catch(err => {
           console.log(err);

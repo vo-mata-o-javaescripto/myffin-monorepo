@@ -7,5 +7,6 @@ export declare class AppService {
     getTicker(ticker: string): Promise<Ticker>;
     getCriptoTicker(ticker: string): Promise<Ticker>;
     directusLogout(): Promise<AxiosResponse<any>>;
+    refreshToken(refreshToken: string): Promise<AxiosResponse<any>>;
 }
 export {};

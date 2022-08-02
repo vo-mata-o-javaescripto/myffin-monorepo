@@ -27,4 +27,10 @@ export class AppService {
       refresh_token: 'sdfsdfsdf'
     });
   }
+
+  refreshToken(refreshToken: string): Promise<AxiosResponse<any>> {
+    return axios.post('http://localhost:8055/auth/refresh', {
+      refresh_token: refreshToken
+    });
+  }
 }
