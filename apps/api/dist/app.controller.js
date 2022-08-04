@@ -58,10 +58,10 @@ let AppController = class AppController {
     async doLoginRefresh(body, res) {
         try {
             const call = await this.appService.refreshToken(body.refreshToken);
-            return res.status(common_1.HttpStatus.OK).json(call);
+            return res.status(common_1.HttpStatus.OK).json(call.data.data);
         }
         catch (err) {
-            return res.status(common_1.HttpStatus.BAD_REQUEST).json({ msg: err.message });
+            return res.status(common_1.HttpStatus.BAD_REQUEST).json({ msg: 'deu erro' });
         }
     }
     async doLogout(res) {

@@ -66,9 +66,9 @@ export class AppController {
   ) {
     try {
       const call: any = await this.appService.refreshToken(body.refreshToken);
-      return res.status(HttpStatus.OK).json(call);
+      return res.status(HttpStatus.OK).json(call.data.data);
     } catch (err: any) {
-      return res.status(HttpStatus.BAD_REQUEST).json({ msg: err.message });
+      return res.status(HttpStatus.BAD_REQUEST).json({ msg: 'deu erro' });
     }
   }
 

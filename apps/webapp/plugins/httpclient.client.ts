@@ -20,26 +20,36 @@ export default defineNuxtPlugin(_nuxtApp => {
 
   async function renewToken() {
     const refreshToken = window.localStorage.getItem('refreshToken');
+    if (refreshToken !== 'undefined' && refreshToken) {
+      try {
+        const response = await fetch('http://localhost:3005/login/refresh', {
+          method: 'POST',
+          body: JSON.stringify({ refreshToken }),
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          }
+        });
 
-    const response = await fetch('http://localhost:3005/login/refresh', {
-      method: 'POST',
-      body: JSON.stringify({ refreshToken }),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
+        const json: {
+          access_token: string;
+          refresh_token: string;
+          expires: number;
+        } = await response.json();
+
+        if (response.ok) {
+          authStore.authToken = json.access_token;
+
+          window.localStorage.setItem('refreshToken', json.refresh_token);
+          window.localStorage.setItem(
+            'accessTokenExp',
+            json.expires.toString()
+          );
+        }
+      } catch (err) {
+        console.log(err);
       }
-    });
-
-    const json: {
-      access_token: string;
-      refresh_token: string;
-      expires: number;
-    } = await response.json();
-
-    authStore.authToken = json.access_token;
-
-    window.localStorage.setItem('refreshToken', json.refresh_token);
-    window.localStorage.setItem('accessTokenExp', json.expires.toString());
+    }
   }
 
   async function get(input: GetInput): Promise<any> {
@@ -108,7 +118,8 @@ export default defineNuxtPlugin(_nuxtApp => {
     provide: {
       hello: (msg: string) => `Hello ${msg}!`,
       post,
-      get
+      get,
+      renewToken
     }
   };
 });
